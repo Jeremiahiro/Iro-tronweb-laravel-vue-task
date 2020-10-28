@@ -19,10 +19,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/words', [WordsController::class, 'index']);
-Route::get('/words/{id}', [WordsController::class, 'show']);
-Route::put('/words/{id}', [WordsController::class, 'update']);
-Route::delete('/words/{id}', [WordsController::class, 'destroy']);
+Route::get('/words/{word}', [WordsController::class, 'index']);
+// Route::get('/words/{id}', [WordsController::class, 'show']);
+// Route::put('/words/{id}', [WordsController::class, 'update']);
+// Route::delete('/words/{id}', [WordsController::class, 'destroy']);
 
 
 

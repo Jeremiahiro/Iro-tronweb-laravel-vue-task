@@ -14,13 +14,9 @@ class WordsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($word)
     {
-        // $words = Words::latest()->paginate(20);
-        // return WordResource::collection($words);
-
-        $word = 'example';
-        $api = 'https://wordsapiv1.p.rapidapi.com/words/'.$word;
+        $api = 'https://wordsapiv1.p.rapidapi.com/words/' . $word;
 
         $response = Http::withHeaders([
             "x-rapidapi-host" => "wordsapiv1.p.rapidapi.com",
@@ -28,10 +24,7 @@ class WordsController extends Controller
             "useQueryString" => true
         ])->get($api);
         
-        dd($response->json());
-        // dd($response->json()['word']);
-        // dd($response->json()['syllables']['list']);
-
+        return $response->json();
     }
 
     /**

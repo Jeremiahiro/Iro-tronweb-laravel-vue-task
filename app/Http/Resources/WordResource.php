@@ -17,8 +17,8 @@ class WordResource extends JsonResource
         return [
             'id' => $this->id,
             'word' => $this->word,
-            'definition' => $this->definition,
-            'synonyms' => $this->data,
+            // 'definition' => $this->definition,
+            // 'synonyms' => $this->data,
         ];
     }
 }

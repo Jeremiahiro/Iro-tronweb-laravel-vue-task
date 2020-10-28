@@ -1899,6 +1899,91 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/App.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/App.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      loading: false,
+      error: null,
+      data: null,
+      query: null
+    };
+  },
+  watch: {
+    query: function query(after, before) {
+      this.searchWord();
+    }
+  },
+  methods: {
+    searchWord: function searchWord() {
+      var _this = this;
+
+      this.error = this.users = null;
+      this.loading = true;
+      var query = this.query;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/words/" + query).then(function (response) {
+        console.log(response);
+        _this.loading = false;
+        _this.data = response.data;
+      })["catch"](function (error) {
+        this.loading = false;
+        this.error = error.response.data.message || error.message;
+      });
+    },
+    handlerFunction: function handlerFunction(syllable) {
+      this.query = syllable;
+      this.searchWord(); // console.log(syllable)
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js& ***!
@@ -6372,7 +6457,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nbody {\n    font-family: 'Nunito';\n    padding: 0;\n    margin: 0;\n}\n.antialiased {\n    min-height: 100vh;\n    background-color: #1a202c;\n    color: #fff;\n}\n.word-div {\n    max-width: 70vw;\n    padding: 40px;\n    margin: 0 auto;\n}\n.textfield {\n    padding: 15px;\n    border-radius: 2px;\n    font-size: 16px;\n    width: 100%;\n    transition: opacity 200ms ease-out;\n    margin-bottom: 20px;\n    -webkit-appearance: textfield;\n    -moz-appearance: textfield;\n         appearance: textfield;\n}\n.word-definition {\n    list-style-type: none;\n}\n.definition {\n    color: #fff;\n}\ntable {\n    color: #333;\n    background: white;\n    border: 1px solid grey;\n    font-size: 12pt;\n    border-collapse: collapse;\n}\ntable tr,\ntable td {\n    padding: .5em;\n    border: 1px solid lightgrey;\n}\n.tag-container {\n    display: flex;\n    flex-flow: row wrap;\n}\n.tag {\n    /* pointer-events: none; */\n    /* color: white; */\n    margin: 0 4px;\n    font-weight: bold;\n    color: #333;\n    text-decoration: none;\n}\n\n", ""]);
+exports.push([module.i, "\nbody {\n    font-family: 'Nunito';\n    padding: 0;\n    margin: 0;\n}\n.antialiased {\n    min-height: 100vh;\n    background-color: #1a202c;\n    color: #fff;\n}\n.word-div {\n    max-width: 70vw;\n    padding: 40px;\n    margin: 0 auto;\n}\n.textfield {\n    padding: 15px;\n    border-radius: 2px;\n    font-size: 16px;\n    width: 100%;\n    transition: opacity 200ms ease-out;\n    margin-bottom: 20px;\n    -webkit-appearance: textfield;\n    -moz-appearance: textfield;\n         appearance: textfield;\n}\n.word {\n    text-transform: uppercase;\n}\ntable {\n    min-width: 100%;\n    color: #333;\n    background: white;\n    border: 1px solid grey;\n    border-collapse: collapse;\n}\ntable tr,\ntable td {\n    font-size: 16px;\n    padding: .5em;\n    border: 1px solid lightgrey;\n}\n.syllables {\n    font-style: italic;\n}\n.text-center {\n    text-align: center;\n}\n.tag-container {\n    display: flex;\n    flex-flow: row wrap;\n}\n.tag {\n    /* pointer-events: none; */\n    /* color: white; */\n    margin: 0 4px;\n    font-weight: bold;\n    color: #333;\n    text-decoration: none;\n}\n\n", ""]);
 
 // exports
 
@@ -38167,94 +38252,125 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "antialiased" }, [
-      _c("div", { staticClass: "word-div" }, [
-        _c("form", [
-          _c("input", {
-            staticClass: "textfield",
-            attrs: {
-              type: "search",
-              id: "word-search",
-              placeholder: "Search word..."
+  return _c("div", { staticClass: "antialiased" }, [
+    _c("div", { staticClass: "word-div" }, [
+      _c("form", [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.query,
+              expression: "query"
             }
-          })
-        ]),
-        _vm._v(" "),
-        _c("table", [
-          _c("tr", [
-            _c("td", [
-              _c("strong", [_vm._v("WORD:")]),
-              _vm._v(
-                "\n                    Definition: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse, laudantium ratione!\n                    Iure\n                    iste voluptatibus quasi dolores, cumque vel maiores nobis numquam tempora rerum dolorum dicta\n                    natus\n                    veniam asperiores recusandae reiciendis.\n                    "
-              ),
-              _c("br"),
-              _vm._v(" "),
-              _c("span", { staticClass: "tag-container " }, [
-                _vm._v("\n                        Synonyms: "),
-                _c("a", { staticClass: "tag", attrs: { href: "#" } }, [
-                  _vm._v("alpha")
-                ]),
-                _vm._v(" "),
-                _c("a", { staticClass: "tag", attrs: { href: "#" } }, [
-                  _vm._v("bravo")
-                ])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [
-              _c("strong", [_vm._v("WORD:")]),
-              _vm._v(
-                "\n                    Definition: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse, laudantium ratione!\n                    Iure\n                    iste voluptatibus quasi dolores, cumque vel maiores nobis numquam tempora rerum dolorum dicta\n                    natus\n                    veniam asperiores recusandae reiciendis.\n                    "
-              ),
-              _c("br"),
-              _vm._v(" "),
-              _c("span", { staticClass: "tag-container " }, [
-                _vm._v("\n                        Synonyms: "),
-                _c("a", { staticClass: "tag", attrs: { href: "#" } }, [
-                  _vm._v("alpha")
-                ]),
-                _vm._v(" "),
-                _c("a", { staticClass: "tag", attrs: { href: "#" } }, [
-                  _vm._v("bravo")
-                ])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [
-              _c("strong", [_vm._v("WORD:")]),
-              _vm._v(
-                "\n                    Definition: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse, laudantium ratione!\n                    Iure\n                    iste voluptatibus quasi dolores, cumque vel maiores nobis numquam tempora rerum dolorum dicta\n                    natus\n                    veniam asperiores recusandae reiciendis.\n                    "
-              ),
-              _c("br"),
-              _vm._v(" "),
-              _c("span", { staticClass: "tag-container " }, [
-                _vm._v("\n                        Synonyms: "),
-                _c("a", { staticClass: "tag", attrs: { href: "#" } }, [
-                  _vm._v("alpha")
-                ]),
-                _vm._v(" "),
-                _c("a", { staticClass: "tag", attrs: { href: "#" } }, [
-                  _vm._v("bravo")
-                ])
-              ])
-            ])
+          ],
+          staticClass: "textfield",
+          attrs: {
+            type: "search",
+            id: "word-search",
+            placeholder: "Search word..."
+          },
+          domProps: { value: _vm.query },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.query = $event.target.value
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _vm.error
+        ? _c("div", { staticClass: "alert text-center" }, [
+            _vm._v(_vm._s(_vm.error))
           ])
-        ])
-      ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.loading
+        ? _c("div", { staticClass: "loading text-center" }, [
+            _vm._v("Loading...")
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.data && _vm.query
+        ? _c("table", [
+            _vm.data["message"]
+              ? _c("tr", [
+                  _c("td", { staticClass: "text-center" }, [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(_vm.data["message"]) +
+                        "\n                "
+                    )
+                  ])
+                ])
+              : _c("tr", [
+                  _c("td", [
+                    _c("strong", { staticClass: "word" }, [
+                      _vm._v(_vm._s(_vm.data["word"]))
+                    ]),
+                    _vm._v(" "),
+                    _vm.data["results"]
+                      ? _c(
+                          "ul",
+                          { staticClass: "definition" },
+                          _vm._l(_vm.data["results"], function(definition) {
+                            return _c("li", { key: definition.id }, [
+                              _vm._v(
+                                "\n                            " +
+                                  _vm._s(definition["definition"]) +
+                                  "\n                        "
+                              )
+                            ])
+                          }),
+                          0
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("hr"),
+                    _vm._v(" "),
+                    _vm.data["syllables"]
+                      ? _c(
+                          "span",
+                          { staticClass: "syllables" },
+                          [
+                            _vm._v(
+                              "\n                        Syllables (" +
+                                _vm._s(_vm.data["syllables"]["count"]) +
+                                "):\n                        "
+                            ),
+                            _vm._l(_vm.data["syllables"]["list"], function(
+                              syllable
+                            ) {
+                              return _c(
+                                "a",
+                                {
+                                  key: syllable.id,
+                                  staticClass: "tag",
+                                  attrs: { href: "#", disabled: _vm.loading },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.handlerFunction(syllable)
+                                    }
+                                  }
+                                },
+                                [_vm._v(_vm._s(syllable))]
+                              )
+                            })
+                          ],
+                          2
+                        )
+                      : _vm._e()
+                  ])
+                ])
+          ])
+        : _vm._e()
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -50575,17 +50691,19 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _App_vue_vue_type_template_id_332fccf4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App.vue?vue&type=template&id=332fccf4& */ "./resources/js/components/App.vue?vue&type=template&id=332fccf4&");
-/* harmony import */ var _App_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/App.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.vue?vue&type=script&lang=js& */ "./resources/js/components/App.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _App_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/App.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-var script = {}
+
+
 
 
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  script,
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _App_vue_vue_type_template_id_332fccf4___WEBPACK_IMPORTED_MODULE_0__["render"],
   _App_vue_vue_type_template_id_332fccf4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
@@ -50599,6 +50717,20 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 if (false) { var api; }
 component.options.__file = "resources/js/components/App.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/App.vue?vue&type=script&lang=js&":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/App.vue?vue&type=script&lang=js& ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./App.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/App.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
