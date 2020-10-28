@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Words;
 use Illuminate\Http\Request;
 use App\Http\Resources\WordResource;
+use Illuminate\Support\Facades\Http;
 
 class WordsController extends Controller
 {
@@ -15,8 +16,22 @@ class WordsController extends Controller
      */
     public function index()
     {
-        $words = Words::latest()->paginate(20);
-        return WordResource::collection($words);
+        // $words = Words::latest()->paginate(20);
+        // return WordResource::collection($words);
+
+        $word = 'example';
+        $api = 'https://wordsapiv1.p.rapidapi.com/words/'.$word;
+
+        $response = Http::withHeaders([
+            "x-rapidapi-host" => "wordsapiv1.p.rapidapi.com",
+            "x-rapidapi-key" => "a85302ed9bmsh494a31ab90e9506p10dfd4jsnd7588075ab5d",
+            "useQueryString" => true
+        ])->get($api);
+        
+        dd($response->json());
+        // dd($response->json()['word']);
+        // dd($response->json()['syllables']['list']);
+
     }
 
     /**

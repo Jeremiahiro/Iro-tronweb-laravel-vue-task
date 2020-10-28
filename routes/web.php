@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VuePagesController;
+use App\Http\Controllers\WordsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,5 +14,11 @@ use App\Http\Controllers\VuePagesController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Route::get('/words', [WordsController::class, 'index']);
 
 Route::get('/{any}', [VuePagesController::class, 'index'])->where('any', '.*');

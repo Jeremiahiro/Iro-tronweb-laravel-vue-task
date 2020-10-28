@@ -9,38 +9,9 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import Vue from 'vue'
-import VueRouter from 'vue-router'
-
-
-Vue.use(VueRouter)
-
 
 import App from './components/App'
-import Home from './components/Home'
-import WordsIndex from './components/WordsIndex'
-import WordsSearch from './components/WordsSearch'
 
-
-const router = new VueRouter({
-    mode: 'history',
-    routes: [
-        {
-            path: '/',
-            name: 'home',
-            component: Home
-        },
-        {
-            path: '/words',
-            name: 'words.index',
-            component: WordsIndex,
-        },
-        {
-            path: '/words/:word/edit',
-            name: 'word.show',
-            component: WordsSearch,
-        },
-    ],
-});
 /**
 
 
@@ -65,7 +36,6 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
     components: { App },
-    router,
 });
 
 
