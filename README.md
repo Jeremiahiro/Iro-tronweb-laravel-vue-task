@@ -29,4 +29,4 @@
 
 Update .env file with database information (optional)
 
-**If you encounter any issues, I one click away**  _jeremiahiro@gmail.com_.
+**If you encounter any issues, I am one click away**  _jeremiahiro@gmail.com_.
