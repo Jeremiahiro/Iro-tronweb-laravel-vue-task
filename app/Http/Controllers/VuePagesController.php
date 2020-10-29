@@ -10,7 +10,8 @@ class VuePagesController extends Controller
     public function index()
     {
         if(Browser::isChrome()){
-            return view('pages');
+            $url = request()->url();
+            return view('pages', compact('url'));
         } else {
             return view('welcome');
         }

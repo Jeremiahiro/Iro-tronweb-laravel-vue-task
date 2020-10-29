@@ -2,7 +2,8 @@
     <div class="antialiased">
         <div class="word-div">
             <form>
-                <input v-model="query" type="search" id="word-search" class="textfield" placeholder="Search word..." />
+                <input type="search" v-model="query" id="word-search" class="textfield"
+                    placeholder="Search word..." />
             </form>
             <div v-if="error" class="alert text-center">{{ error }}</div>
             <div v-if="loading" class="loading text-center">Loading...</div>
@@ -14,18 +15,20 @@
                 </tr>
                 <tr v-else>
                     <td>
+                        <hr>
                         <strong class="word">{{ data['word'] }}</strong>
                         <ul class="definition" v-if="data['results']">
-                            <li v-for="definition in data['results']" :key="definition.id">
-                                {{ definition['definition'] }}
+                            <li v-for="define in data['results']" :key="define.id">
+                                {{ define['definition'] }}
+                                <br>
+                                <span class="syllables" v-if="define['synonyms']">
+                                    Synonyms:
+                                    <a class="tag" href="#" v-for="synonym in define['synonyms']" :key="synonym.id"
+                                        :disabled="loading" @click="handlerFunction(synonym)">{{ synonym }}</a>
+                                </span>
                             </li>
                         </ul>
                         <hr>
-                        <span class="syllables" v-if="data['syllables']">
-                            Syllables ({{ data['syllables']['count'] }}):
-                            <a class="tag" href="#" v-for="syllable in data['syllables']['list']" :key="syllable.id"
-                                :disabled="loading" @click="handlerFunction(syllable)">{{ syllable }}</a>
-                        </span>
                     </td>
                 </tr>
             </table>
@@ -34,6 +37,7 @@
 </template>
 <script>
     import axios from 'axios';
+    import _ from "lodash";
 
     export default {
         data() {
@@ -50,25 +54,22 @@
             }
         },
         methods: {
-            searchWord() {
-                this.error = this.users = null;
-                this.loading = true;
-                var query = this.query
-                axios.get(`/api/words/` + query)
-                    .then(response => {
-                        console.log(response);
+            searchWord: _.debounce(function () {
+                this.error = this.words = null;
+                var searchUrl = '/api/word_search/?q=';
+                axios.get(searchUrl + this.query)
+                    .then((response) => {
+                        console.log(response)
                         this.loading = false;
                         this.data = response.data;
-                    })
-                    .catch(function (error) {
+                    }).catch(function (error) {
                         this.loading = false;
                         this.error = error.response.data.message || error.message;
                     });
-            },
-            handlerFunction(syllable) {
-                this.query = syllable;
+            }),
+            handlerFunction(synonym) {
+                this.query = synonym;
                 this.searchWord();
-                // console.log(syllable)
             }
         }
     }
@@ -82,7 +83,8 @@
     $darkgray: #1a202c;
     $lightgrey: rgb(211, 211, 211);
     $white: #fff;
-    
+    $size: 16px;
+
     body {
         font: 100% $font-stack;
         padding: 0;
@@ -104,9 +106,9 @@
     }
 
     .textfield {
-        padding: 15px;
+        padding: $size - 1;
         border-radius: 2px;
-        font-size: 16px;
+        font-size: $size;
         width: 100%;
         transition: opacity 200ms ease-out;
         margin-bottom: 20px;
@@ -126,20 +128,29 @@
         border-collapse: collapse;
 
         tr {
-            font-size: 16px;
+            font-size: $size;
             padding: .5em;
             border: 1px solid lightgrey;
         }
 
         td {
-            font-size: 16px;
+            font-size: $size;
             padding: .5em;
             border: 1px solid lightgrey;
         }
     }
 
-    .syllables {
-        font-style: italic;
+    ul {
+        font-size: $size;
+
+        li {
+            padding: 4px auto;
+
+            span {
+                font-style: italic;
+                margin-left: $size/2;
+            }
+        }
     }
 
     .text-center {

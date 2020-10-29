@@ -1910,6 +1910,8 @@ module.exports = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -1944,6 +1946,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -1960,13 +1966,12 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
-    searchWord: function searchWord() {
+    searchWord: lodash__WEBPACK_IMPORTED_MODULE_1___default.a.debounce(function () {
       var _this = this;
 
-      this.error = this.users = null;
-      this.loading = true;
-      var query = this.query;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/words/" + query).then(function (response) {
+      this.error = this.words = null;
+      var searchUrl = '/api/word_search/?q=';
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(searchUrl + this.query).then(function (response) {
         console.log(response);
         _this.loading = false;
         _this.data = response.data;
@@ -1974,10 +1979,10 @@ __webpack_require__.r(__webpack_exports__);
         this.loading = false;
         this.error = error.response.data.message || error.message;
       });
-    },
-    handlerFunction: function handlerFunction(syllable) {
-      this.query = syllable;
-      this.searchWord(); // console.log(syllable)
+    }),
+    handlerFunction: function handlerFunction(synonym) {
+      this.query = synonym;
+      this.searchWord();
     }
   }
 });
@@ -6457,7 +6462,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "body[data-v-332fccf4] {\n  font: 100% Helvetica, sans-serif;\n  padding: 0;\n  margin: 0;\n}\n.antialiased[data-v-332fccf4] {\n  background-color: #1a202c;\n  color: #fff;\n  min-height: 100vh;\n  margin: 0;\n  padding: 0;\n}\n.word-div[data-v-332fccf4] {\n  max-width: 70vw;\n  padding: 40px;\n  margin: 0 auto;\n}\n.textfield[data-v-332fccf4] {\n  padding: 15px;\n  border-radius: 2px;\n  font-size: 16px;\n  width: 100%;\n  transition: opacity 200ms ease-out;\n  margin-bottom: 20px;\n  -webkit-appearance: textfield;\n  -moz-appearance: textfield;\n       appearance: textfield;\n}\n.word[data-v-332fccf4] {\n  text-transform: uppercase;\n}\ntable[data-v-332fccf4] {\n  min-width: 100%;\n  color: #333;\n  background: white;\n  border: 1px solid grey;\n  border-collapse: collapse;\n}\ntable tr[data-v-332fccf4] {\n  font-size: 16px;\n  padding: 0.5em;\n  border: 1px solid lightgrey;\n}\ntable td[data-v-332fccf4] {\n  font-size: 16px;\n  padding: 0.5em;\n  border: 1px solid lightgrey;\n}\n.syllables[data-v-332fccf4] {\n  font-style: italic;\n}\n.text-center[data-v-332fccf4] {\n  text-align: center;\n}\n.tag-container[data-v-332fccf4] {\n  display: flex;\n  flex-flow: row wrap;\n}\n.tag[data-v-332fccf4] {\n  margin: 0 4px;\n  font-weight: bold;\n  color: #333;\n  text-decoration: none;\n}", ""]);
+exports.push([module.i, "body[data-v-332fccf4] {\n  font: 100% Helvetica, sans-serif;\n  padding: 0;\n  margin: 0;\n}\n.antialiased[data-v-332fccf4] {\n  background-color: #1a202c;\n  color: #fff;\n  min-height: 100vh;\n  margin: 0;\n  padding: 0;\n}\n.word-div[data-v-332fccf4] {\n  max-width: 70vw;\n  padding: 40px;\n  margin: 0 auto;\n}\n.textfield[data-v-332fccf4] {\n  padding: 15px;\n  border-radius: 2px;\n  font-size: 16px;\n  width: 100%;\n  transition: opacity 200ms ease-out;\n  margin-bottom: 20px;\n  -webkit-appearance: textfield;\n  -moz-appearance: textfield;\n       appearance: textfield;\n}\n.word[data-v-332fccf4] {\n  text-transform: uppercase;\n}\ntable[data-v-332fccf4] {\n  min-width: 100%;\n  color: #333;\n  background: white;\n  border: 1px solid grey;\n  border-collapse: collapse;\n}\ntable tr[data-v-332fccf4] {\n  font-size: 16px;\n  padding: 0.5em;\n  border: 1px solid lightgrey;\n}\ntable td[data-v-332fccf4] {\n  font-size: 16px;\n  padding: 0.5em;\n  border: 1px solid lightgrey;\n}\nul[data-v-332fccf4] {\n  font-size: 16px;\n}\nul li[data-v-332fccf4] {\n  padding: 4px auto;\n}\nul li span[data-v-332fccf4] {\n  font-style: italic;\n  margin-left: 8px;\n}\n.text-center[data-v-332fccf4] {\n  text-align: center;\n}\n.tag-container[data-v-332fccf4] {\n  display: flex;\n  flex-flow: row wrap;\n}\n.tag[data-v-332fccf4] {\n  margin: 0 4px;\n  font-weight: bold;\n  color: #333;\n  text-decoration: none;\n}", ""]);
 
 // exports
 
@@ -38308,6 +38313,8 @@ var render = function() {
                 ])
               : _c("tr", [
                   _c("td", [
+                    _c("hr"),
+                    _vm._v(" "),
                     _c("strong", { staticClass: "word" }, [
                       _vm._v(_vm._s(_vm.data["word"]))
                     ]),
@@ -38316,53 +38323,57 @@ var render = function() {
                       ? _c(
                           "ul",
                           { staticClass: "definition" },
-                          _vm._l(_vm.data["results"], function(definition) {
-                            return _c("li", { key: definition.id }, [
+                          _vm._l(_vm.data["results"], function(define) {
+                            return _c("li", { key: define.id }, [
                               _vm._v(
                                 "\n                            " +
-                                  _vm._s(definition["definition"]) +
-                                  "\n                        "
-                              )
+                                  _vm._s(define["definition"]) +
+                                  "\n                            "
+                              ),
+                              _c("br"),
+                              _vm._v(" "),
+                              define["synonyms"]
+                                ? _c(
+                                    "span",
+                                    { staticClass: "syllables" },
+                                    [
+                                      _vm._v(
+                                        "\n                                Synonyms:\n                                "
+                                      ),
+                                      _vm._l(define["synonyms"], function(
+                                        synonym
+                                      ) {
+                                        return _c(
+                                          "a",
+                                          {
+                                            key: synonym.id,
+                                            staticClass: "tag",
+                                            attrs: {
+                                              href: "#",
+                                              disabled: _vm.loading
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.handlerFunction(
+                                                  synonym
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [_vm._v(_vm._s(synonym))]
+                                        )
+                                      })
+                                    ],
+                                    2
+                                  )
+                                : _vm._e()
                             ])
                           }),
                           0
                         )
                       : _vm._e(),
                     _vm._v(" "),
-                    _c("hr"),
-                    _vm._v(" "),
-                    _vm.data["syllables"]
-                      ? _c(
-                          "span",
-                          { staticClass: "syllables" },
-                          [
-                            _vm._v(
-                              "\n                        Syllables (" +
-                                _vm._s(_vm.data["syllables"]["count"]) +
-                                "):\n                        "
-                            ),
-                            _vm._l(_vm.data["syllables"]["list"], function(
-                              syllable
-                            ) {
-                              return _c(
-                                "a",
-                                {
-                                  key: syllable.id,
-                                  staticClass: "tag",
-                                  attrs: { href: "#", disabled: _vm.loading },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.handlerFunction(syllable)
-                                    }
-                                  }
-                                },
-                                [_vm._v(_vm._s(syllable))]
-                              )
-                            })
-                          ],
-                          2
-                        )
-                      : _vm._e()
+                    _c("hr")
                   ])
                 ])
           ])

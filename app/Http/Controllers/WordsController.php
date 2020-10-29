@@ -14,9 +14,10 @@ class WordsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($word)
+    public function index()
     {
-        $api = 'https://wordsapiv1.p.rapidapi.com/words/' . $word;
+        $key = \Request::get('q');
+        $api = 'https://wordsapiv1.p.rapidapi.com/words/' . $key;
 
         $response = Http::withHeaders([
             "x-rapidapi-host" => "wordsapiv1.p.rapidapi.com",
