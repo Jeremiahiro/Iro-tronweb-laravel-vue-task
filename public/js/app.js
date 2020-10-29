@@ -1979,7 +1979,7 @@ __webpack_require__.r(__webpack_exports__);
         this.loading = false;
         this.error = error.response.data.message || error.message;
       });
-    }),
+    }, 300, false),
     handlerFunction: function handlerFunction(synonym) {
       this.query = synonym;
       this.searchWord();

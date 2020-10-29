@@ -66,7 +66,7 @@
                         this.loading = false;
                         this.error = error.response.data.message || error.message;
                     });
-            }),
+            }, 300, false),
             handlerFunction(synonym) {
                 this.query = synonym;
                 this.searchWord();
