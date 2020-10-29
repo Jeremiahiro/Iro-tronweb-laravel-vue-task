@@ -74,17 +74,27 @@
     }
 
 </script>
-<style>
+<style lang="scss" scoped>
+    $font-stack: Helvetica,
+    sans-serif;
+    $primary-color: #333;
+    $gray: #333;
+    $darkgray: #1a202c;
+    $lightgrey: rgb(211, 211, 211);
+    $white: #fff;
+    
     body {
-        font-family: 'Nunito';
+        font: 100% $font-stack;
         padding: 0;
         margin: 0;
     }
 
     .antialiased {
+        background-color: $darkgray;
+        color: $white;
         min-height: 100vh;
-        background-color: #1a202c;
-        color: #fff;
+        margin: 0;
+        padding: 0;
     }
 
     .word-div {
@@ -114,13 +124,18 @@
         background: white;
         border: 1px solid grey;
         border-collapse: collapse;
-    }
 
-    table tr,
-    table td {
-        font-size: 16px;
-        padding: .5em;
-        border: 1px solid lightgrey;
+        tr {
+            font-size: 16px;
+            padding: .5em;
+            border: 1px solid lightgrey;
+        }
+
+        td {
+            font-size: 16px;
+            padding: .5em;
+            border: 1px solid lightgrey;
+        }
     }
 
     .syllables {
@@ -137,11 +152,9 @@
     }
 
     .tag {
-        /* pointer-events: none; */
-        /* color: white; */
         margin: 0 4px;
         font-weight: bold;
-        color: #333;
+        color: $gray;
         text-decoration: none;
     }
 
