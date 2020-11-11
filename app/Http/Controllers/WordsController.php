@@ -20,13 +20,34 @@ class WordsController extends Controller
         $api = 'https://wordsapiv1.p.rapidapi.com/words/' . $key;
 
         $response = Http::withHeaders([
-            "x-rapidapi-host" => "wordsapiv1.p.rapidapi.com",
-            "x-rapidapi-key" => "a85302ed9bmsh494a31ab90e9506p10dfd4jsnd7588075ab5d",
+            "x-rapidapi-host" => env('API_HOST'),
+            "x-rapidapi-key" => env('API_KEY'),
             "useQueryString" => true
         ])->get($api);
         
         return $response->json();
     }
+
+    // public function index(Request $request)
+    // {
+    //     $error = ['error' => 'No results found, please try with different keywords.'];
+
+    //     if($request->has('q')) {
+
+    //         $api = 'https://wordsapiv1.p.rapidapi.com/words/' . $request->get('q');
+
+    //         $response = Http::withHeaders([
+    //             "x-rapidapi-host" => "wordsapiv1.p.rapidapi.com",
+    //             "x-rapidapi-key" => "a85302ed9bmsh494a31ab90e9506p10dfd4jsnd7588075ab5d",
+    //             "useQueryString" => true
+    //         ])->get($api);
+            
+    //         return $response->json();
+    //     }
+
+    //     // Return the error message if no keywords existed
+    //     return $error;
+    // }
 
     /**
      * Show the form for creating a new resource.

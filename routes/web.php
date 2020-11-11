@@ -19,6 +19,4 @@ use App\Http\Controllers\WordsController;
 //     return view('welcome');
 // });
 
-// Route::get('/words', [WordsController::class, 'index']);
-
 Route::get('/{any}', [VuePagesController::class, 'index'])->where('any', '.*');
